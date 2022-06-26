@@ -6,15 +6,13 @@ Plug 'dense-analysis/ale'
 " LightLine (status/tabline plugin)
 Plug 'itchyny/lightline.vim'
 " COC (Code completion)
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
-Plug 'neovim/nvim-lspconfig'
+Plug 'Valloric/YouCompleteMe'
 " Colorschemes
 Plug 'morhetz/gruvbox'
-call plug#end()
+" FZF
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
-" source ~/.config/nvim/coc_config.vim
+call plug#end()
 
 let g:termdebug_wide=1
 
@@ -27,11 +25,6 @@ colorscheme gruvbox
 " Leader keybinds
 noremap <Space> <Nop>
 map <Space> <Leader>
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
-au FileType go nmap <Leader>dd <Plug>(go-def)
-
-
 
 " Misc Settings
 set noshowmode
@@ -44,7 +37,6 @@ set cmdheight=1
 " Tab Settings
 set showtabline=1
 
-
 " Search settings
 set noic
 set incsearch
@@ -52,6 +44,10 @@ set hlsearch
 
 " Go Settings
 let g:go_fmt_command='goimports'
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>dd <Plug>(go-def)
+
 " Google style required setting
 :set nofixendofline
 
