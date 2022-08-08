@@ -1,4 +1,6 @@
 call plug#begin()
+" Git Plugins
+Plug 'tpope/vim-fugitive'
 " Go Plugin
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " ALE (linter)
@@ -11,6 +13,8 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'morhetz/gruvbox'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 
 call plug#end()
 
@@ -18,13 +22,22 @@ let g:termdebug_wide=1
 
 " Colorscheme settings
 set termguicolors
-let g:lightline = {} 
-let g:lightline.colorscheme = 'gruvbox'
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 colorscheme gruvbox
 
 " Leader keybinds
 noremap <Space> <Nop>
 map <Space> <Leader>
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
 
 " Misc Settings
 set noshowmode
@@ -37,10 +50,23 @@ set cmdheight=1
 " Tab Settings
 set showtabline=1
 
+" Nav Settings"
+"nnoremap j 10j
+"vnoremap j 10j
+"nnoremap k 10k
+"vnoremap k 10k
+
 " Search settings
 set noic
 set incsearch
 set hlsearch
+
+" FZF Settings
+nnoremap <Leader>f :GFiles<Cr>
+nnoremap <Leader>g :Rg<Cr>
+
+" YCM Settings
+set completeopt-=preview
 
 " Go Settings
 let g:go_fmt_command='goimports'
@@ -51,5 +77,6 @@ au FileType go nmap <Leader>dd <Plug>(go-def)
 " Google style required setting
 :set nofixendofline
 
+" Statusline
 
 
