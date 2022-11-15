@@ -2,6 +2,7 @@ git config --global mergetool.fugitive.cmd 'nvim -f -c "Gvdiffsplit!" "$MERGED"'
 git config --global merge.tool fugitive
 
 # Gen alias
+alias s="source"
 alias c="clear"
 alias hg="history | grep"
 parse_git_branch() {
@@ -18,7 +19,7 @@ alias ta='tmux attach'
 
 # Nav alias
 alias cd="cd -P"
-alias cf='cd $(fdfind --type directory -E ~/cnrm-2/ | fzf)'
+alias cf='cd $(find . -type d -print | fzf)'
 
 #Git alias
 source /usr/share/bash-completion/completions/git

@@ -1,4 +1,4 @@
-call plug#begin()
+call plug#begin("~/.config/nvim/plugged")
 " Git Plugins
 Plug 'tpope/vim-fugitive'
 " Go Plugin
@@ -8,14 +8,15 @@ Plug 'dense-analysis/ale'
 " LightLine (status/tabline plugin)
 Plug 'itchyny/lightline.vim'
 " COC (Code completion)
-Plug 'Valloric/YouCompleteMe'
 " Colorschemes
 Plug 'morhetz/gruvbox'
 " FZF
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-
+" Gutentags
+Plug 'ludovicchabant/vim-gutentags'
+" Tagbar
+Plug 'preservim/tagbar'
 call plug#end()
 
 let g:termdebug_wide=1
@@ -46,6 +47,7 @@ set tabstop=4
 set shiftwidth=4
 set matchtime=0
 set cmdheight=1
+set autochdir
 
 " Tab Settings
 set showtabline=1
@@ -62,11 +64,15 @@ set incsearch
 set hlsearch
 
 " FZF Settings
-nnoremap <Leader>f :GFiles<Cr>
+" nnoremap <Leader>f :GFiles<Cr>
 nnoremap <Leader>g :Rg<Cr>
 
 " YCM Settings
 set completeopt-=preview
+
+" Tagbar Settings
+nnoremap <Leader>t :TagbarToggle<Cr>
+nnoremap <Leader>f g<C-]>
 
 " Go Settings
 let g:go_fmt_command='goimports'
