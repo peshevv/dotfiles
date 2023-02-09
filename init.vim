@@ -72,7 +72,8 @@ set completeopt-=preview
 
 " Tagbar Settings
 nnoremap <Leader>t :TagbarToggle<Cr>
-nnoremap <Leader>f g<C-]>
+nnoremap <Leader>ff g<C-]>
+nnoremap <Leader>ft <C-w><C-]><C-w>T
 
 " Go Settings
 let g:go_fmt_command='goimports'
