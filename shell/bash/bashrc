@@ -47,3 +47,10 @@ __git_complete gst _git_stash
 alias gs="git status"
 __git_complete gs _git_status
 
+
+# Docker Alias
+alias d="docker"
+alias dc="docker compose"
+
+# kubectl Alias
+alias k="kubectl"

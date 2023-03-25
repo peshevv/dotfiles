@@ -32,6 +32,9 @@ function bootstrap {
     printf "\n[Bootstrap] Creating symlinks to dotfiles...\n"
     $SCRIPTS_DIR/create_links.sh || handle_error
 
+    # Source bashrc
+    source ~/.bashrc || handle_error
+
     # Download vim-plug
     printf "\n[Bootstrap] Downloading vim-plug...\n"
 	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
